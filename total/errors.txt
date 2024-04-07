@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 96: Line with id start_72a33094 appears twice. The other line is game/EP1.rpy:76
+
+File "game/script.rpy", line 98: Line with id start_72a33094_1 appears twice. The other line is game/EP1.rpy:107
+
+Ren'Py Version: Ren'Py 8.2.1.24030407
+Sun Apr  7 15:21:28 2024
