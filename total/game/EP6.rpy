@@ -1,16 +1,19 @@
 image cluster = "images/ep6/background/사람 있는 클러스터.png"
 image home = "images/ep6/background/자취방사진 2.png"
 image sikdang = "images/ep6/background/식당.PNG"
+image ep6_quiz = "images/ep6/etc/quiz_2.png"
 
 image bambi = "images/ep6/etc/밤비.png"
 image notice = "images/ep6/etc/시스템_공지1.png"
 image computer1 = "images/ep6/etc/컴퓨터_조배정.png"
 
-image gyeoul = "images/ep6/gyeoul/후드 째려보는 겨울 2.png"
-image gyeoul computer = "images/ep6/gyeoul/컴퓨터하고있는겨울.png"
+image gyeoul jjz = "images/ep6/gyeoul/후드 째려보는 겨울 2.png"
 image gyeoul angry = "images/ep6/gyeoul/angly.png"
 image gyeoul silmang = "images/ep6/gyeoul/약간 실망한 겨울.PNG"
-image gyeoul smile = "images/ep6/gyeoul/웃는 겨울3 2.png"
+image ep6_gyeoul = "images/ep6/gyeoul/gyeoul_little.png"
+image ep6_gyeoul smile = "images/ep6/gyeoul/gyeoul_smile.png"
+image ep6_gyeoul angry = "images/ep6/gyeoul/gyeoul_angry.png"
+image ep6_gyeoul smile2 = "images/ep6/gyeoul/gyeoul_smile2.png"
 
 image gaeul sad = "images/ep6/gaeul/가을_슬픔.PNG"
 image gaeul angry = "images/ep6/gaeul/가을_화남.PNG"
@@ -31,16 +34,26 @@ image phone k6 = "images/ep6/phone/ep6카톡_6.png"
 image phone k7 = "images/ep6/phone/ep6카톡_7.png"
 image phone k8 = "images/ep6/phone/ep6카톡_8.png"
 image phone lock = "images/ep6/phone/잠금화면_2.png"
+image phone lock1 = "images/ep6/phone/잠금화면_3.png"
 
-# define narration = Character(_(''), cloor="#e888c2")
-# define gaeul = Character(_('서가을'), color="#7d2926f8")
-# define bomi = Character(_('윤보미'), color="#36824b")
-# define gyeoul = Character(_('한겨울'), color="#9c94a0ff")
-# define cat = Character(_('고양이'), color="#c69a3b")
-# define bambi = Character(_('루돌프'), color="#9c623eaa")
-# define citiman = Character(_('지나가는시민1'), color="#3a409b")
 
-# define e = Character("player_name",dynamic = True,color="#ff0000")
+
+define narration = Character(_(''), cloor="#e888c2")
+define gaeul = Character(_('서가을'), color="#7d2926f8")
+define bomi = Character(_('윤보미'), color="#36824b")
+define gyeoul = Character(_('한겨울'), color="#9c94a0ff")
+define cat = Character(_('고양이'), color="#c69a3b")
+define bambi = Character(_('루돌프'), color="#9c623eaa")
+define citiman = Character(_('지나가는시민1'), color="#3a409b")
+define player_name = "플레이어이름"
+define e = Character("player_name",dynamic = True,color="#ff0000")
+#!!!나이트타임입력
+transform nighttime:
+    matrixcolor BrightnessMatrix (-0.5)
+
+transform nighttime2:
+    matrixcolor BrightnessMatrix (0)
+#ep6 start
 
 label ep6_start:
 # 배경
@@ -56,13 +69,17 @@ label ep6_start:
     )
     play sound "audio/ep6/eff/typing.mp3"
     scenter "Episode.6"
-    scene home
-
     play music "audio/ep6/bgm/ep6.mp3"
+    scene home
+    # 에피6
+
+    #**에피 6**
+
     #클러스터
     #시스템 창 or 슬랙 알림으로 오늘이 러쉬발표날이라는거 알려줌
     scene cluster :
         zoom 2.9
+    play sound "audio/ep6/eff/slack.mp3"
     show notice at center :
         zoom 0.7
         ypos 700  # 캐릭터의 세로 위치
@@ -72,8 +89,8 @@ label ep6_start:
     show bambi
     bambi "여러분~ 벌써 라피신 절반이 지나갔네요! 이제 남은 절반동안도 열심히 달려볼까요?"
 
-    bambi "오늘은 드디어 rush가 시작되는 날입니다!"
-    
+    bambi "오늘은 드디어 {color=#ff0000}RUSH{/color}가 시작되는 날입니다!"
+
     bambi "잠시 후 팀원과 팀장이 발표되니 모두 확인해 주세요!"
 
     e "(아.. 오늘이 러쉬였구나.. 한번 확인 해 볼까..?)"
@@ -83,13 +100,13 @@ label ep6_start:
         ypos 900
     e "(어디보자… 조원이...)"
 
-    e "(한겨울,서가을, 윤보미..?)"
-    
+    e "( 윤보미, 서가을, 한겨울..?)"
+   
     e "(이게 말이 되나??)"
 
     e "(그리고 내 사진 옆에 있는 별은 뭐지...?)"
 #밤비등장
-    bambi "아! 사진 옆에 별이 붙어있는 붙어있는 사람이 팀장입니다!"
+    bambi "아! 사진 옆에 별이 붙어있는 사람이 팀장입니다!"
     
     bambi "그럼 다들 화이팅~ *^^*"
 #밤비아웃
@@ -99,9 +116,9 @@ label ep6_start:
 #밤비등장
     bambi "그럴 일은 없겠지만! 만약 팀원 중 한명이라도 취소한다면 팀원 전체가 0점처리되니,"
     
-    bambi "모두 책임감있게 진행해주세요~!"
+    bambi "모두 책임감 있게 진행해 주세요~!"
 #밤비아웃
-    e "(이게 무슨..!평생 단 한 번도 조장같은거 해본 적이 없는데..!)"
+    e "(이게 무슨..! 평생 단 한 번도 조장같은거 해본 적이 없는데..!)"
 
     e "(하 망했다...)"
     scene black with dissolve
@@ -110,7 +127,7 @@ label ep6_start:
     #노뚝이 슬랙으로 단톡방 만듦
 
 # 여기는 슬랙 대화창으로 보여지는게 좀 많음
-
+    play sound "audio/ep6/eff/letter.mp3"
 # <모바일 화면 창>
     scene home :
         zoom 2.62
@@ -134,7 +151,7 @@ label ep6_start:
     show phone k5 at center :
         zoom 0.65
         ypos 970
-    bomi "그럼 {color=#ff0000}12시{/color}에 모여서 다같이 밥먹으면서 이야기 해 볼까?"
+    bomi "그럼 12시에 모여서 다같이 밥먹으면서 이야기 해 볼까?"
     show phone k6 at center :
         zoom 0.65
         ypos 970
@@ -148,35 +165,29 @@ label ep6_start:
     show phone k8 at center :
         zoom 0.65
         ypos 970
-    e "그...그러자"
+    e "그...그러자.."
     hide phone
     e "(이렇게 핸드폰 알람이 많이 울린 적이 있었나...?)"
     
-    e "슬슬 나가야겠다."
+    play sound "audio/ep6/eff/shower.mp3"
+    e "슬슬 씻어야지."
+    
+    
 #문자알림음
-    play sound "audio/ep6/eff/letter.mp3"
+    show  phone lock1
     narration "띠링"
 
 # 보미 갠톡 온거임
-    bomi "우리 같은조더라"
+    gyeoul "우리 같은조더라"
 
-    bomi "팀장. 잘 해보자"
-
-    bomi "(임티)"
-
+    gyeoul "팀장. 잘 해보자"
 # 근데 준비한다고 못봄.
 
 # 배경 그림에 주인공 준비하는데 핸드폰 위로 메시지 창 띠링 띠링 뜨고 마는거임.
-
-    e "(이렇게 입으면 되려나..?)"
-
-    e "(누구랑 같이 밥을 먹는게 너무 오랫만이라... 너무 과한가...?)"
-
-    narration "연락을 못본 [player_name]..."
-
+    narration "연락을 못 본 [player_name]..."
+    scene black with dissolve
     narration "그렇게 시간이 흐른 후"
 #(대충 셔츠에 청바지 입고 어색해하는 주인공 그림)
-    scene black with dissolve
     e "아..! 이러다 늦겠다... 빨리 가야..."
     play sound "audio/ep6/eff/letter.mp3"
     narration "띠링"
@@ -195,38 +206,46 @@ label ep6_start:
 #전화울리는소리
     hide phone with dissolve
     play sound "audio/ep6/eff/call.mp3"
-    narration "[player_name]의 전하기가 울린다)"
+    narration "([player_name]의 전하기가 울린다)"
     show bomi smile
     stop sound
     bomi "[player_name]! 준비 다 했어?"
 
     e "어...? 어..."
 
-    bomi "우왕! 타이밍 짱이다~! 나 지금 너희집 앞에 막 도착했는데!"
+    bomi "우왕! 타이밍 짱이다~! 나 지금 너네집 앞에 막 도착했는데!"
 
     e "어...? 우리 집에...? 왜...?"
 
     bomi "무슨소리야~ 이유가 어디있어! 보고싶으니까 왔지!!"
     show bomi hello
     bomi "빨리 내려와~!"
+    play sound "audio/ep6/eff/calloff.mp3"
     hide bomi with dissolve
     narration "(뚝)"
 #화면 페이드아웃
     scene black with dissolve
-    e "(노뚝이 왜 여기까지..? 일단 빨리 내려가자)"
+    e "(보미가 왜 여기까지..? 일단 빨리 내려가자)"
 #식당 on
-    scene sikdang
+    scene sikdang :
+        zoom 3.2
+    show bomi smile at left
+
     narration "보미와 같이 식당에 간 [player_name]."
-    show bomi smile
 #노랑이 웃으면서 등장
 # (기싸움 구간)
 #겨울이 화난표정
-    show gyeoul angry
-    gyeoul "...내 연락은 받지도 않더니..(중얼거림)"
-#가을 슬픈표정
-    show gaeul sad
+    #!!!중얼거림 ->중얼중얼
+    #!!!bomi nighttime
+    show bomi smile at left , nighttime
+    show ep6_gyeoul angry at right
+    gyeoul "...내 연락은 받지도 않더니..(중얼중얼)"
+#!!!가을 앵그리로 바꿈
+    show ep6_gyeoul angry at right , nighttime
+    show gaeul angry at center
     gaeul "뭐야...? 둘이...? 무슨 사이야...?"
-
+    show gaeul angry at center , nighttime
+    show ep6_gyeoul angry at right , nighttime2
     gyeoul "[player_name] 너 설마 둘이..."
 
 # <선택지>
@@ -235,42 +254,50 @@ label ep6_start:
 # 2. … 우린 친구야
 # 3. …(얼굴 붉히기)
 #보미 웃으면서
-    show bomi smile
-    bomi "아! 몰랐구나! [player_name]이랑 나랑 어릴떄부터 친구였어!"
+    show ep6_gyeoul angry at right , nighttime
+    show gaeul angry at center , nighttime
+    show bomi smile at left , nighttime2
+    bomi "아! 몰랐구나! [player_name]이랑 나랑 어릴때부터 친구였어!"
     
-    bomi "이제는 아니게 될 수 도 있지만 ㅎㅎ"
+    bomi "이제는 아니게 될 수도 있지만 ㅎㅎ"
 #겨울 놀래면서
-    show gyeoul silmang
+    show bomi smile at left , nighttime
+    show ep6_gyeoul angry at right , nighttime2
     gyeoul "그게 무슨 소리야?"
 #보미웃으면서
-    show bomi smile
+    show ep6_gyeoul angry at right , nighttime
+    show bomi smile at left , nighttime2
     bomi "너가 신경쓸 만한 일은 아니야."
-
-    e "분위기가 이상하다... 이게 무슨 일이지...?"
+    show bomi smile at left, nighttime
+    e "(분위기가 이상하다... 이게 무슨 일이지...?)"
 #가을 화내면서
-    show gaeul angry
+    show gaeul angry at center , nighttime2
     gaeul "자, 다들 뭐 먹을래? 주문부터 하자."
-
+    show gaeul angry at center , nighttime
     e "그...그래 주문하자!"
 #화면페이드아웃
     scene black with dissolve
-    e "(잠깐 무슨 일이 있었떤 것 같지만)" 
+    e "(잠깐 무슨 일이 있었던 것 같지만)" 
     
     e "(이후 우리는 밥을 먹으며 과제에 대한 이야기를 진행했다.)"
-    scene cluster
+    scene cluster :
+        zoom 3.2
 #페이드인
 #가을디폴트
-    show gaeul 
+    show gaeul at left
     gaeul "그럼 이 부분은 이렇게 풀면 될 것 같은데?"
 #겨울디폴트
-    show gyeoul
-    gyeoul "응 그럼 난 DFS알고리즘을 짜올게."
+    show gaeul at left , nighttime
+    show ep6_gyeoul at center
+    gyeoul "응 그럼 난 DFS부분 짜올게."
 #보미디폴트
-    show bomi
-    bomi "좋아! 그럼 난 파일입출력쪽을 해올게!"
+    show ep6_gyeoul at center , nighttime
+    show bomi at right
+    bomi "좋아! 그럼 난 파일입출력쪽 해올게!"
 #가을디폴트
-    show gaeul
-    gaeul "그럼 내일까지 각자 맡은부분 해서 다시 모이자!"
+    show bomi at right , nighttime
+    show gaeul at left , nighttime2
+    gaeul "그럼 내일까지 각자 맡은 부분 해서 다시 모이자!"
 #화면 페이드아웃
     scene black with dissolve
     e "(정신을 차려보니 과제는 어느덧 거의 완성되어 있었다...)"
@@ -280,27 +307,63 @@ label ep6_start:
     e "(클러스터에서 더 많이 공부해 봐야겠다...)"
 
     narration "다음날..."
-    scene home
-    e "드디어 제출이다... 과제를 제출하자!"
+    scene home :#!!!!zoom
+        zoom 2.8
+    narration "과제 제출날"
+
+    e "드디어 제출이다...!"
 
 #시스템창 과제 제출하기 누르면 퀴즈 뜸
-
-# 퀴즈 성공시 -
-#놀래는보미
-    show bomi smile
-    bomi "역시 [player_name]이야! 정말 대단해!"
+    show ep6_quiz at center :
+        zoom 0.63
+        ypos 900
+    menu :
+        "정답을 골라주세요!{fast}"
+        "1번":
+            show bomi smile at right
+            bomi "역시 [player_name]이야! 정말 대단해!"
 #놀래는겨울
-    show gyeoul smile
-    gyeoul "잘했어 [player_name]. 역시 내 파트너 다워."
-
-# 실패시.
-#가을아쉬워하며?혹은디폴트
-    show gaeul
-    gaeul "그래도 좋은 경험이었어...!"
-#겨울아쉬워하며?혹은디폴트
-    show gyeoul
-    gyeoul "...역시 너무 과대평가 한걸까?"
-#보미당황해하며?혹은디폴트
-    show bomi sad
-    bomi "괜찮아~! 그래도 재미있었잖아!"
+            show ep6_gyeoul smile at left
+            gyeoul "잘했어 [player_name]. 이번에 좀 했네."
+            scene black with dissolve
+        "2번":
+            show gaeul at left
+            gaeul "그래도 좋은 경험이었어...!"
+            show ep6_gyeoul at center
+            gyeoul "...역시 너무 과대평가 한걸까?"
+            show bomi sad at right
+            bomi "괜찮아~! 그래도 재미있었잖아!"
+            scene black with dissolve
+        "3번":
+            show gaeul at left
+            gaeul "그래도 좋은 경험이었어...!"
+            show ep6_gyeoul at center
+            gyeoul "...역시 너무 과대평가 한걸까?"
+            show bomi sad at right
+            bomi "괜찮아~! 그래도 재미있었잖아!"
+            scene black with dissolve
+        "4번":
+            show gaeul at left
+            gaeul "그래도 좋은 경험이었어...!"
+            show ep6_gyeoul at center
+            gyeoul "...역시 너무 과대평가 한걸까?"
+            show bomi sad at right
+            bomi "괜찮아~! 그래도 재미있었잖아!"
+            scene black with dissolve
     jump ep7_start
+# # 퀴즈 성공시 -
+# #놀래는보미
+#     show bomi smile at right
+#     bomi "역시 [player_name]이야! 정말 대단해!"
+# #놀래는겨울
+#     show ep6_gyeoul smile at left
+#     gyeoul "잘했어 [player_name]. 이번에 좀 했네."
+
+# # 실패시.
+# #가을아쉬워하며?혹은디폴트
+#     show gaeul at left
+#     gaeul "그래도 좋은 경험이었어...!"
+#     show ep6_gyeoul at center
+#     gyeoul "...역시 너무 과대평가 한걸까?"
+#     show bomi sad at right
+#     bomi "괜찮아~! 그래도 재미있었잖아!"

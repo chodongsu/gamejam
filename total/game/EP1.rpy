@@ -25,8 +25,9 @@ define cat = Character(_('고양이'), color="#c69a3b")
 define bambi = Character(_('루돌프'), color="#9c623eaa")
 define citiman = Character(_('지나가는시민1'), color="#3a409b")
 
-define config.has_autosave = True
-define autosave_on_choice = True
+# define lastsave=renpy.newest_slot()
+#     if lastsave!=None:
+#         textbutton _("Continue") action FileLoad(lastsave) style "default" xcenter .5 text_size 25
 
 define align_center = Character(None,
     what_size=30, #폰트 사이즈

@@ -203,23 +203,71 @@ style input:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#choice
 
+default choice_position = "left"
+
 screen choice(items):
-    style_prefix "choice"
+    if choice_position == "right":
+        style_prefix "choiceRight"
+    elif choice_position == "left":
+        style_prefix "choiceLeft"
+    elif choice_position == "bottom":
+        style_prefix "choiceBottom"
+    elif choice_position == "right_bottom":
+        style_prefix "choiceRight_bottom"
+    else:
+        style_prefix "choice"
 
     vbox:
         for i in items:
             textbutton i.caption action i.action
 
+# style choice_vbox:
+#     xalign 1.0
+#     ypos 405
+#     yanchor 5.0
+#     spacing gui.choice_spacing
+
+style choiceRight_vbox:
+    xalign 0.9
+    ypos 405
+    yanchor 0.5
+    spacing gui.choice_spacing
+
+style choiceLeft_vbox:
+    xalign 0.3
+    ypos 405
+    yanchor 0.5
+    spacing gui.choice_spacing
+
+style choiceBottom_vbox:
+    xalign 0.5
+    ypos 860
+    # 700
+    yanchor 0.5
+    spacing gui.choice_spacing
+
+style choiceRight_bottom_vbox:
+    xalign 0.5
+    ypos 950
+    yanchor 0.7
+    spacing gui.choice_spacing
 
 style choice_vbox is vbox
+style choiceRight_vbox is vbox
+style choiceLeft_vbox is vbox
+style choiceBottom_vbox is vbox
+style choiceRight_bottom_vbox is vbox
+
+style choiceRight_bottom_button is button
+style choiceRight_bottom_button_text is button_text
+
 style choice_button is button
 style choice_button_text is button_text
 
 style choice_vbox:
     xalign 0.5
-    ypos 405
+    ypos 500
     yanchor 0.5
-
     spacing gui.choice_spacing
 
 style choice_button is default:
@@ -228,7 +276,11 @@ style choice_button is default:
 style choice_button_text is default:
     properties gui.text_properties("choice_button")
 
+style choiceBottom_button is default:
+    properties gui.button_properties("choice_button")
 
+style choiceBottom_button_text is default:
+    properties gui.text_properties("choice_button")
 ## Quick Menu 스크린 ##############################################################
 ##
 ## 퀵메뉴는 게임 외 메뉴 접근성을 높여주기 위해 게임 내에 표시됩니다.
@@ -282,7 +334,17 @@ style quick_button_text:
 ## 이 스크린은 메인메뉴와 게임외 메뉴에 포함되어 다른 메뉴로 이동하거나 게임을
 ## 시작/종료할 수 있게 합니다.
 
+# define persist.lastsave = renpy.newest_slot(r"\d+")
+
 screen navigation():
+
+    default lastsave = renpy.newest_slot("[^_]")
+
+    # add this where appropriate
+    
+    # $lastsave=renpy.newest_slot()
+    # if lastsave!=None:
+    #     textbutton _("Continue") action FileLoad(lastsave) style "default" xcenter .5 text_size 25
 
     vbox:
         style_prefix "navigation"
@@ -295,12 +357,11 @@ screen navigation():
         if main_menu:
 
             textbutton _("시작하기") action Start()
-
         else:
-
-            textbutton _("대사록") action ShowMenu("history")
-
             textbutton _("저장하기") action ShowMenu("save")
+        
+        # if persistent.lastsave is not None:
+        textbutton _("계속하기") action FileLoad(lastsave, slot=True)
 
         textbutton _("불러오기") action ShowMenu("load")
 

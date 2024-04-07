@@ -2,9 +2,35 @@
 errors listed below, and try again.
 
 
-File "game/EP1.rpy", line 90: The screen statement is not a valid child of the bar statement.
-    style "fixed_bar"screen stat_overlay_3:       
-                           ^
+The label bad_ending is defined twice, at File "game/EP4.rpy", line 81:
+label bad_ending :
+and File "game/EP4_r.rpy", line 52:
+label bad_ending :
+
+
+The label answer_question is defined twice, at File "game/EP4.rpy", line 96:
+label answer_question :
+and File "game/EP4_r.rpy", line 67:
+label answer_question :
+
+
+The label up_likeability is defined twice, at File "game/EP4.rpy", line 211:
+label up_likeability :
+and File "game/EP4_r.rpy", line 174:
+label up_likeability :
+
+
+The label down_likeability is defined twice, at File "game/EP4.rpy", line 223:
+label down_likeability :
+and File "game/EP4_r.rpy", line 185:
+label down_likeability :
+
+
+The label return_epi is defined twice, at File "game/EP4.rpy", line 233:
+label return_epi :
+and File "game/EP4_r.rpy", line 194:
+label return_epi :
+
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Sun Apr  7 20:32:24 2024
+Mon Apr  8 03:41:07 2024

@@ -21,7 +21,6 @@ label ep7_start:
     # 지금까지 퀴즈 3개 2중 두개 이상 맞췄을 때 시스템 창으로
     show ep7_etc notice_hidden at center :
         zoom 0.9
-        ypos 600
     narration "축하합니다! 조건을 충족하여 히든 에피소드가 열렸습니다."
 
     narration "<히든 에피소드 - BSQ>"
@@ -29,7 +28,7 @@ label ep7_start:
     narration "bsq를 성공하면 특별 보상이 주어집니다."
     $ choice_position = "bottom"
     menu:
-        narration "진행하시겠습니까?{fast}"
+        narration ""
         "네!":
             hide ep7_etc with dissolve
             narration "BSQ 진행을 선택하셨습니다."

@@ -254,7 +254,8 @@ define gui.skip_ypos = 15
 define gui.notify_ypos = 68
 
 ## 선택지의 메뉴 선택 간의 간격입니다.
-define gui.choice_spacing = 33
+define gui.choice_spacing = 50
+## default 33
 
 ## 메인과 게임 메뉴에서 네비게이션 섹션의 버튼들 간의 간격입니다.
 define gui.navigation_spacing = 6

@@ -52,6 +52,7 @@ label ep2_start:
     #보미디폴트표정
     show bomi  
     bomi "너는 어떻게 온거야? 너도 {color=#FF5D5D}이거{/color} 하는거 맞지?"
+    $ choice_position = "default"
     menu:
         bomi "너는 어떻게 온거야? 너도 {color=#FF5D5D}이거{/color} 하는거 맞지?{fast}"
         "..어? ..응!":
