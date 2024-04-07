@@ -1,16 +1,13 @@
 ﻿# 이 파일에 게임 스크립트를 입력합니다.
 
 # image 문을 사용해 이미지를 정의합니다.
-# image eileen happy = "eileen_happy.png"
 image cluster = "images/ep3/backgrounds/cluster.png"
 image home = "images/ep3/backgrounds/home.png"
 image gyeoul computer = "images/ep3/characters/gyeoul_computer.png"
 image gyeoul angry = "images/ep3/characters/angly.png"
 image bambi = "images/ep3/characters/bambi.png"
-image gyeoul smile = "images/ep3/characters/gyeoul_smile.png"
 
 label ep3_start:
-
     # play sound "audio/ep3/sound/typing.mp3"
     # center "Episode.3"
     play music "audio/ep3/bgm/ep3.mp3"
@@ -99,15 +96,15 @@ label ep3_start:
 
     gyeoul "뭐야? 너 말 못해?"
 
-# <선택지>
-# 1. …. ….
-# 2. …미…미안
-
-# 1. 겨울 : 이딴 새끼랑 동료 학습을 해야 한다고?
-# 2. 겨울 : 아 진짜 짜증나게. 찐따 새끼가 뭐라는거야.
+# 뭘 해도 포상임
+    menu :
+        "1. ... ..." :
+            gyeoul "이딴 새끼랑 동료 학습을 해야 한다고?"
+        "2. …미…미안" :
+            gyeoul "아 진짜 짜증나게. 찐따 새끼가 뭐라는거야."
 
     e "그 ...미...미안... 미안해..."
-    hide gyeoul
+    hide gyeoul angry 
     e "(도망치듯 자리를 벗어나고 나니 등 뒤가 축축한 것이 느껴진다.)"
 
     e "(숨쉬기가 답답하고 이 느낌은 마치...)"
@@ -118,10 +115,14 @@ label ep3_start:
 
     e "(나... 잘못 걸린걸까...?)"
 
-# <선택지>
-# 1. 역시 나같은 찐따가 말 걸면 안됐던 걸까…. -> 자존감 -5
-# 2. …(머리가 멍해져 아무 생각도 나지 않는다..) -> 자존감 -3
+    menu :
+        "1. 역시 나같은 찐따가 말 걸면 안됐던 걸까…." :
+            $ gyeoulLove += 5
+            # 자존감 -5
+        "2. …(머리가 멍해져 아무 생각도 나지 않는다..)" :
+            $ gyeoulLove += 10
 
+            # 자존감 -3
     e "아니야. 여기서 포기하면 아무 것도 안되는 거야. 다시 혼자서라도 해보자."
 
 #(딸깍거린는 효과음) / click
@@ -137,7 +138,11 @@ label ep3_start:
     e "어… 이걸 이렇게 하면 되는… 건가…?"
 
 # < 퀴즈 창>
+########## 빼도 될듯??
 # 대충 쉘문제로 ㄱㄱ
+# menu :
+#     "correct" :
+#         jump 
 # 정답 o -> …생각보다 재미있을 지도…?
 # 틀림 -> …역시 이런건 나랑 안맞아…
 #화면페이드아웃

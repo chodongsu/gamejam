@@ -61,6 +61,7 @@ label ep2_start:
 label second_y:
 # 1번 선택시
     #보미웃는표정
+    $ persistent.love[1] += 10
     show bomi smile
     bomi "정말?? 안그래도 혼자 신청한거라 좀 걱정했는데! 너도 같이 한다니 너무 좋아!!"
 

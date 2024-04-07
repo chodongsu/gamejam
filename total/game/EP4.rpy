@@ -24,7 +24,7 @@ image bomi backshot = "images/ep4/characters/ep4/bomi/bomi_backshot.png"
 image bomi sad = "images/ep4/characters/ep4/bomi/bomi_sad.png"
 image bomi surprise = "images/ep4/characters/bomi/bomi_surprise.png"
 
-label  start:
+label  ep_4start:
     scene background cluster :
         zoom 3.0
     e "(오늘은 대망의 exam날이다.)"

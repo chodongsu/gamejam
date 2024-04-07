@@ -1,6 +1,6 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <renpy.display.im.Image object ('images/ep5/characters/후드째려보는겨울 2.PNG') at 0x102602a90>:
+While loading <renpy.display.im.Image object ('images/ep5/characters/후드째려보는겨울 2.PNG') at 0x10479ebb0>:
   File "game/EP6.rpy", line 274, in script
     gyeoul "응 그럼 난 DFS알고리즘을 짜올게."
 OSError: Couldn't find file 'images/ep5/characters/후드째려보는겨울 2.PNG'.
@@ -70,4 +70,4 @@ OSError: Couldn't find file 'images/ep5/characters/후드째려보는겨울 2.PN
 macOS-14.4.1-arm64-arm-64bit arm64
 Ren'Py 8.2.1.24030407
 ep4 1.0
-Sun Apr  7 15:52:25 2024
+Sun Apr  7 16:29:07 2024

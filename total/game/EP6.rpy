@@ -6,7 +6,7 @@ image bambi = "images/ep6/etc/밤비.png"
 image notice = "images/ep6/etc/시스템_공지1.png"
 image computer1 = "images/ep6/etc/컴퓨터_조배정.png"
 
-# image gyeoul jjz = "images/ep6/gyeoul/후드 째려보는 겨울 2.png"
+image gyeoul = "images/ep6/gyeoul/후드 째려보는 겨울 2.png"
 image gyeoul computer = "images/ep6/gyeoul/컴퓨터하고있는겨울.png"
 image gyeoul angry = "images/ep6/gyeoul/angly.png"
 image gyeoul silmang = "images/ep6/gyeoul/약간 실망한 겨울.PNG"
@@ -32,9 +32,6 @@ image phone k7 = "images/ep6/phone/ep6카톡_7.png"
 image phone k8 = "images/ep6/phone/ep6카톡_8.png"
 image phone lock = "images/ep6/phone/잠금화면_2.png"
 
-
-
-
 define narration = Character(_(''), cloor="#e888c2")
 define gaeul = Character(_('서가을'), color="#7d2926f8")
 define bomi = Character(_('윤보미'), color="#36824b")
@@ -44,8 +41,6 @@ define bambi = Character(_('루돌프'), color="#9c623eaa")
 define citiman = Character(_('지나가는시민1'), color="#3a409b")
 define player_name = "플레이어이름"
 define e = Character("player_name",dynamic = True,color="#ff0000")
-
-#ep6 start
 
 label ep6_start:
 # 배경
@@ -62,9 +57,7 @@ label ep6_start:
     play sound "audio/ep6/eff/typing.mp3"
     scenter "Episode.6"
     scene home
-    # 에피6
 
-    #**에피 6**
     play music "audio/ep6/bgm/ep6.mp3"
     #클러스터
     #시스템 창 or 슬랙 알림으로 오늘이 러쉬발표날이라는거 알려줌

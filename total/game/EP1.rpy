@@ -45,9 +45,69 @@ screen set_name(title, init_name):
                 textalign 0.5
             input default init_name xalign 0.5
 
-label ep1_start:
+# 호감도 수치
+define persistent.love = [0, 0, 0]
+
+init:    
+    screen stat_overlay:       
+    # 호감도 창        
+        frame:            
+            # 호감도 창 테두리와 컨텐츠와의 간격            
+            padding (20, 20)            
+            # 호감도 배경 (반투명 - 뒤 2자리 코드가 투명도)            
+            background "#4f5a6680"            
+            # x, y축 정렬            
+            align (1.0, 0.0)            
+            # 호감도 창 크기            
+            xmaximum 350         
+            ymaximum 300            
+            # 텍스트와 호감도 바가 수직으로 배치됨            
+            vbox:                                
+                text "서가을{space=15}[persistent.love[0]]" size 16                
+                bar:                    
+                    value persistent.love[0]                    
+                    # 호감도 바 범위                    
+                    range 100                                        
+                    # 아래 지정한 fixed_bar 스타일을 따름                    
+                    style "fixed_bar"                                    
+                    # 다음 캐릭터의 바와 이전 캐릭터 텍스트 사이의 간격                
+                    # padding을 쓸 경우, 바, 텍스트 간격 모두 동일하게 적용됨                
+                text " " size 3                 
+                text "윤보미{space=15}[persistent.love[1]]" size 16           
+
+                bar:
+                    value persistent.love[1]                    
+                    range 100                    
+                    xalign 0.0                    
+                    style "fixed_bar"                 
+                text " " size 3                 
+                text "한겨울{space=15}[persistent.love[2]]" size 16                 
+                bar:                    
+                    value persistent.love[2]                    
+                    range 100                    
+                    xalign 0.5                    
+                    style "fixed_bar" 
+
+init -5 python:    
+    # 호감도 바 스타일    
+    style.fixed_bar = Style(style.default)        
+    # bar width    
+    style.fixed_bar.xmaximum = 200        
+    # bar height    
+    style.fixed_bar.ymaximum = 15        
+    # bar의 gutter 부분 간격; 5로 지정할 시 5만큼 색이 칠해져있음    
+    style.fixed_bar.left_gutter = 0     
+    style.fixed_bar.right_gutter = 0
+
+    style.fixed_bar.left_bar = Frame("images/bar_full.png", 0, 0)    
+    style.fixed_bar.right_bar = Frame("images/bar_empty.png", 0, 0) 
+
+
+label start:
 
 # 클러스터 전까지 ----------------------------------------------------------------------------
+
+    show screen stat_overlay
 
     play music "/audio/ep1/bgm/에피1_bgm.mp3"
 
